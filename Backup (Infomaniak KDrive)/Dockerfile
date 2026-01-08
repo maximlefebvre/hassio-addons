@@ -1,7 +1,7 @@
 # Utilisation de l'image de base Home Assistant (choisissez l'architecture adaptée)
 # Pour Raspberry Pi 4/5, utilisez : ghcr.io/home-assistant/aarch64-base:latest
 # Pour PC/Intel/NUC, utilisez : ghcr.io/home-assistant/amd64-base:latest
-ARG BUILD_FROM
+ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base-python:3.12-alpine3.19
 FROM $BUILD_FROM
 
 # Installation des dépendances selon l'image de base HA (Alpine)
