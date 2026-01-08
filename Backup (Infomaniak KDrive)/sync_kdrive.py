@@ -10,7 +10,9 @@ BACKUP_DIR = "/backup"
 CHUNK_SIZE = 8 * 1024 * 1024  # 8 Mo par morceau
 
 HEADERS = {"Authorization": f"Bearer {TOKEN}"}
-BASE_URL = f"https://api.infomaniak.com/2/drive/{KDRIVE_ID}"
+BASE_URL = f"https://api.infomaniak.com/3/drive/{KDRIVE_ID}"
+
+print("Lancement de sync_kdrive.py")
 
 def get_upload_url(filename):
     """Initialise la session d'upload et récupère l'URL de destination."""
