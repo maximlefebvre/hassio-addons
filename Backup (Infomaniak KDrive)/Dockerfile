@@ -4,20 +4,18 @@
 ARG BUILD_FROM
 FROM $BUILD_FROM
 
-# 1. Installation de Python et des outils nécessaires via apk
+# Installation des dépendances selon l'image de base HA (Alpine)
 RUN apk add --no-cache \
     python3 \
-    py3-pip
+    py3-pip \
+    py3-requests
 
-# 2. Création d'un environnement virtuel (recommandé pour éviter les erreurs de "break-system-packages")
-# Ou plus simplement pour un add-on, forcer l'installation :
-RUN pip3 install --no-cache-dir requests --break-system-packages
-
-# 3. Copie des fichiers de votre projet
+# Copie du script Python
 COPY sync_kdrive.py /sync_kdrive.py
-COPY run.sh /run.sh
 
-# 4. Permissions
+# Copie du script de lancement
+COPY run.sh /
 RUN chmod a+x /run.sh
 
+# Dans les images HA, on utilise CMD pour lancer le script via s6
 CMD [ "/run.sh" ]
